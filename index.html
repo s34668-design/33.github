@@ -1,1 +1,574 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แฟ้มสะสมผลงาน | ณิชชา ร่มโพธิ์แก้ว</title>
+<style>
+    :root {
+        --bg-main: #0d1117;
+        --bg-card: #161b22;
+        --bg-hover: #21262d;
+        --border-color: #30363d;
+        --text-primary: #f0f6fc;
+        --text-secondary: #8b949e;
+        --accent-cyan: #58a6ff;
+        --accent-glow: rgba(56, 139, 253, 0.15);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        line-height: 1.6;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(13, 17, 23, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 16px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        color: var(--text-primary);
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo span {
+        color: var(--accent-cyan);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+        color: var(--accent-cyan);
+    }
+
+    /* ===== FULLPAGE SECTIONS ===== */
+    .page-section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 1100px;
+        margin: auto;
+        padding: 100px 25px 60px;
+    }
+
+    .section-tag {
+        color: var(--accent-cyan);
+        font-family: monospace;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .section-title {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 12px;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+        text-align: center;
+        align-items: center;
+        background: radial-gradient(circle at 50% 30%, rgba(56, 139, 253, 0.1), transparent 50%);
+    }
+
+    .hero-image {
+        width: 170px;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid var(--accent-cyan);
+        box-shadow: 0 0 25px var(--accent-glow);
+        margin-bottom: 24px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 16px;
+        line-height: 1.2;
+    }
+
+    .hero h1 span {
+        color: var(--accent-cyan);
+    }
+
+    .hero p {
+        color: var(--text-secondary);
+        font-size: 18px;
+        max-width: 700px;
+        margin: 0 auto 32px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border: 1px solid var(--accent-cyan);
+        border-radius: 6px;
+        color: var(--accent-cyan);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        background: rgba(56, 139, 253, 0.05);
+        transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+        background: var(--accent-cyan);
+        color: var(--bg-main);
+        box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-grid {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .about-image {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .about-text p {
+        color: var(--text-secondary);
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .about-text strong {
+        color: var(--text-primary);
+    }
+
+    /* ===== EDUCATION & TARGET UNIVERSTY ===== */
+    .education-container {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 30px;
+        align-items: start;
+    }
+
+    .timeline {
+        border-left: 2px solid var(--border-color);
+        padding-left: 24px;
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 32px;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent-cyan);
+    }
+
+    .timeline-item h3 {
+        font-size: 20px;
+        color: var(--text-primary);
+    }
+
+    .timeline-item p {
+        color: var(--text-secondary);
+        font-size: 15px;
+    }
+
+    .target-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+    }
+
+    .kmutt-logo {
+        width: 140px;
+        height: 140px;
+        object-fit: contain;
+        margin-bottom: 16px;
+        border-radius: 50%;
+        background: #fff;
+        padding: 6px;
+    }
+
+    .target-card h3 {
+        color: var(--accent-cyan);
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .target-card p {
+        color: var(--text-secondary);
+        font-size: 14px;
+    }
+
+    /* ===== CARDS GRID ===== */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent-cyan);
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+    }
+
+    .card p {
+        color: var(--text-secondary);
+        font-size: 14px;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+    }
+
+    .skill-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.2s ease;
+    }
+
+    .skill-card:hover {
+        border-color: var(--accent-cyan);
+        background: var(--bg-hover);
+    }
+
+    .skill-icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-box {
+        text-align: center;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 60px 20px;
+    }
+
+    .contact-box p {
+        color: var(--text-secondary);
+        margin-bottom: 24px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+        text-align: center;
+        padding: 30px;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        font-size: 13px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .about-grid, .education-container {
+            grid-template-columns: 1fr;
+        }
+
+        .about-image {
+            max-width: 250px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .page-section {
+            min-height: auto;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <span>&lt;/&gt;</span> MOJI.PORTFOLIO
+        </div>
+        <div class="nav-links">
+            <a href="#about">เกี่ยวกับฉัน</a>
+            <a href="#education">ประวัติการศึกษา</a>
+            <a href="#skills">ทักษะความสามารถ</a>
+            <a href="#activities">กิจกรรม</a>
+            <a href="#certificates">เกียรติบัตร</a>
+            <a href="#projects">ผลงาน</a>
+            <a href="#contact">ติดต่อ</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="page-section hero">
+    <img src="Mojiprofile.jpg" class="hero-image" alt="Profile Nitcha">
+    <div class="section-tag">// WELCOME TO MY PORTFOLIO</div>
+    <h1>สวัสดีค่ะ, ดิฉัน <span>ณิชชา ร่มโพธิ์แก้ว</span></h1>
+    <p>นักเรียนชั้นมัธยมศึกษาปีที่ 6 แผนการเรียนเตรียมวิทยาการคอมพิวเตอร์และวิศวกรรม (CSE)<br>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</p>
+    <a href="#about" class="btn">สำรวจแฟ้มสะสมผลงาน →</a>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="page-section">
+    <div class="section-tag">01. ABOUT ME</div>
+    <h2 class="section-title">เกี่ยวกับฉัน</h2>
+    <div class="about-grid">
+        <img src="Mojiprofile.jpg" class="about-image" alt="Nitcha Romphokaew">
+        <div class="about-text">
+            <p>สวัสดีค่ะ ดิฉันชื่อ <strong>นางสาวณิชชา ร่มโพธิ์แก้ว</strong> (ชื่อเล่น: <strong>โมจิ</strong>)</p>
+            <p>ปัจจุบันกำลังศึกษาอยู่ในระดับชั้นมัธยมศึกษาตอนปลาย มีความสนใจเป็นอย่างยิ่งในด้านเทคโนโลยี การพัฒนาเว็บ และการออกแบบดิจิทัล</p>
+            <p>พร้อมที่จะเรียนรู้เทคโนโลยีใหม่ ๆ พัฒนาทักษะการแก้ปัญหา และนำความรู้ไปประยุกต์ใช้ในการสร้างสรรค์ผลงานที่มีประโยชน์ในอนาคต</p>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION SECTION -->
+<section id="education" class="page-section">
+    <div class="section-tag">02. EDUCATION</div>
+    <h2 class="section-title">ประวัติการศึกษา & สถาบันเป้าหมาย</h2>
+    <div class="education-container">
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>มัธยมศึกษาตอนปลาย</h3>
+                <p>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</p>
+                <p>แผนการเรียนเตรียมวิทยาการคอมพิวเตอร์และวิศวกรรม (CSE)</p>
+            </div>
+            <div class="timeline-item">
+                <h3>เป้าหมายการศึกษาต่อ</h3>
+                <p>ตั้งใจศึกษาต่อในระดับอุดมศึกษาด้านเทคโนโลยีและคอมพิวเตอร์ เพื่อมุ่งสู่การเป็นนักพัฒนาซอฟต์แวร์และนวัตกรรมดิจิทัล</p>
+            </div>
+        </div>
+        <div class="target-card">
+            <img src="Mojikmutt.jpg" class="kmutt-logo" alt="KMUTT Logo">
+            <h3>Target University</h3>
+            <p><strong>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</strong></p>
+            <p>(King Mongkut's University of Technology Thonburi)</p>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="skills" class="page-section">
+    <div class="section-tag">03. SKILLS</div>
+    <h2 class="section-title">ทักษะความสามารถ</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon">💻</div>
+            <strong>HTML & CSS</strong>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <strong>Creative Design</strong>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">⚡</div>
+            <strong>Technology</strong>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🧠</div>
+            <strong>Problem Solving</strong>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🤝</div>
+            <strong>Teamwork</strong>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🚀</div>
+            <strong>Self Development</strong>
+        </div>
+    </div>
+</section>
+
+<!-- ACTIVITIES SECTION -->
+<section id="activities" class="page-section">
+    <div class="section-tag">04. ACTIVITIES</div>
+    <h2 class="section-title">กิจกรรมและผลงานกิจกรรม</h2>
+    <div class="card-grid">
+        <div class="card">
+            <img src="Moji1.jpg" alt="IS Project Presentation">
+            <div class="card-content">
+                <h3>นำเสนอรายงานการค้นคว้าอิสระ (IS)</h3>
+                <p>ร่วมนำเสนอผลงานสิ่งประดิษฐ์และนวัตกรรม "เครื่องดับกลิ่นอัตโนมัติเพื่อแก้ปัญหากลิ่นไม่พึงประสงค์" ในกิจกรรมวิชาการ</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800" alt="Teamwork">
+            <div class="card-content">
+                <h3>การทำงานเป็นทีม</h3>
+                <p>ร่วมทำโครงงานกลุ่ม ฝึกการสื่อสารและการแก้ปัญหาร่วมกันในสายงานวิศวกรรมและเทคโนโลยี</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800" alt="Learning">
+            <div class="card-content">
+                <h3>การเรียนรู้และพัฒนาตนเอง</h3>
+                <p>เข้าร่วมกิจกรรมเสริมสร้างทักษะทางวิชาการและการนำเสนอผลงานเทคโนโลยีอย่างต่อเนื่อง</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATES SECTION -->
+<section id="certificates" class="page-section">
+    <div class="section-tag">05. CERTIFICATES</div>
+    <h2 class="section-title">เกียรติบัตร</h2>
+    <div class="card-grid">
+        <div class="card">
+            <img src="Moji2.jpg" alt="Computer Graphic and Homepage Contest 2024 Certificate">
+            <div class="card-content">
+                <h3>Computer Graphic & Homepage Contest 2024</h3>
+                <p>ได้รับเกียรติบัตรเข้าร่วมการแข่งขัน ออกแบบกราฟิกและโฮมเพจ ระดับมัธยมศึกษาตอนปลาย จัดโดยวิทยาลัยเทคโนโลยีภาคตะวันออก (อี.เทค) เมื่อวันที่ 27 สิงหาคม 2567</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800" alt="Certificate 2">
+            <div class="card-content">
+                <h3>เกียรติบัตรการแข่งขันวิชาการ</h3>
+                <p>ระบุรายละเอียดการแข่งขัน ทักษะคอมพิวเตอร์ หรือกิจกรรมโรงเรียนเพิ่มเติม</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=800" alt="Certificate 3">
+            <div class="card-content">
+                <h3>เกียรติบัตรกิจกรรมบำเพ็ญประโยชน์</h3>
+                <p>ระบุรายละเอียดกิจกรรมจิตอาสาหรือการมีส่วนร่วมในโรงเรียน</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects" class="page-section">
+    <div class="section-tag">06. PROJECTS</div>
+    <h2 class="section-title">โครงงานและโปรเจกต์</h2>
+    <div class="card-grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800" alt="Coding project">
+            <div class="card-content">
+                <h3>เว็บไซต์ Portfolio Personal</h3>
+                <p>พัฒนาเว็บไซต์นำเสนอผลงานตนเองด้วย HTML5 และ CSS3 ในดีไซน์ GitHub Dark Theme</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="Future project">
+            <div class="card-content">
+                <h3>โปรเจกต์นวัตกรรมในอนาคต</h3>
+                <p>พื้นที่สำหรับเพิ่มผลงานการพัฒนาแอปพลิเคชันหรือระบบ IoT ในระดับอุดมศึกษา</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="page-section">
+    <div class="contact-box">
+        <div class="section-tag">07. CONTACT</div>
+        <h2 class="section-title" style="border:none; margin-bottom:10px;">ช่องทางการติดต่อ</h2>
+        <p>ขอบคุณที่เข้ามาเยี่ยมชม Portfolio ของฉัน หากมีข้อสงสัยหรือสนใจร่วมงาน สามารถติดต่อได้ทางอีเมลค่ะ</p>
+        <a href="mailto:your-email@example.com" class="btn">ส่งอีเมลหาฉัน</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Nitcha Romphokaew. Built with HTML & CSS.
+</footer>
+
+</body>
+                                         </html>
 
